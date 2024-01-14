@@ -1,0 +1,73 @@
+@import '../../assets/variables';
+.add__task{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    // gap: 1.5rem;
+    margin: 3rem 0;
+    height: 3.5rem;
+    width: 100%;
+    input{
+        border: 0;
+        padding: 1rem 2rem;
+        border-radius: 1.4rem;
+        background-color: $gray;
+        width: 80%;
+        // margin-left: 1rem;
+        font-size: 1.2rem;
+        height: 100%;
+        color: $secondary;
+        &:focus{
+            outline: none;
+            border: 1px solid $secondary;
+        }
+    }
+    &-btn{
+        font-weight: bold;
+        background-color: $primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        img{
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
+.task__list{
+    width: 100%;
+}
+.task__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $secondary;
+    padding: 15px 20px;
+    border-radius: 10px; 
+    width: 100%;
+    background-color: $gray;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    &-radio{
+        width: 1.8rem;
+        height: 1.8rem;
+        border: $primary;
+        border-radius: 50%;
+        border: 2px solid $primary;
+        margin-right: 1rem;
+    }
+    &-text{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    &-edit img,
+    &-delete img{
+        width: 2rem;
+        height: 2rem;
+        margin-left: 1rem;
+    }
+}

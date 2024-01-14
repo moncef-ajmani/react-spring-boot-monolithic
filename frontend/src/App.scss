@@ -1,0 +1,38 @@
+@import 'assets/variables';
+
+body{
+    background-color: $dark !important;
+    color: $secondary !important;
+}
+.custom__container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: $dark;
+    border-radius: 10px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $secondary;
+    background: $gray;
+    border-radius: 10px;
+
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

@@ -1,0 +1,29 @@
+.progres{
+    border: 1px solid #cebea4;
+    width: 100%;
+    padding: 3.5rem;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    &__text{
+        h2{
+            font-size: min(32px,3rem);
+            font-weight: 700 !important;
+        }
+        p{
+            font-size: min(24px,1.2rem);
+            letter-spacing: 0.3rem;
+            line-height: 0.4rem;
+        }
+    }
+    &__state{
+        font-size: 3rem;
+        font-weight: 700;
+        color: #0d0d0d;
+        background-color: #ff5631;
+        width: fit-content;
+        border-radius: 50%;
+        padding: min(30px,3rem);
+    }
+}
