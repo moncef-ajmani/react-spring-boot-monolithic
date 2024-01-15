@@ -4,13 +4,16 @@
     font-size: 1.8rem;
     justify-content: space-between;
     padding: 30px;
+
     &__logo{
         
         text-transform: uppercase;
         font-weight: bold;
+        cursor: pointer;
         span{
             color: #ff5631;
         }    
+
     }
     &__logout-logo{
         height: 2.2rem;

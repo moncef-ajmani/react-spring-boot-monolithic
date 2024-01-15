@@ -5,7 +5,7 @@ import delete_icon from '../../assets/delete.png'
 
 const TaskItem = () => {
   return (
-    <div className='task__item'>
+    <div className='task__item done'>
       <div className='d-flex align-items-center'>
         <div className='task__item-radio'></div>
         <div className='task__item-text'>Task 1</div>
@@ -14,7 +14,6 @@ const TaskItem = () => {
           <div className='task__item-edit'><img src={edit_icon}/></div>
           <div className='task__item-delete'><img src={delete_icon}/></div>
         </div>
-        
     </div>
   )
 }

@@ -52,6 +52,15 @@
     background-color: $gray;
     margin-bottom: 2rem;
     cursor: pointer;
+    &.done{
+        .task__item-radio{
+            background-color: greenyellow;
+            border-color: greenyellow;
+        }
+        .task__item-text{
+            text-decoration: line-through;
+        }
+    }
     &-radio{
         width: 1.8rem;
         height: 1.8rem;
