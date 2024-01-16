@@ -13,6 +13,8 @@ body{
     padding: 2rem;
 }
 
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 7px;
@@ -35,4 +37,44 @@ body{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+.modal-content{
+    background-color: $dark !important;
+    border:1px solid $primary;
+    padding: 2rem;
+    box-shadow: 0 0 10px $primary;
+}
+.box-shadow:hover{
+    box-shadow: 0 0 10px $primary;
+}
+.modal{
+    &-title{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    a{
+        color: $primary;
+    }
+    &-btn{
+        background-color: $primary;
+        text-align: center;
+        padding: 0.5rem 0;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 2rem 0 1.5rem;
+        border-radius: .5rem;
+        
+    }
+    .form-control{
+        background-color: $gray;
+        color: $secondary;
+        border-color: $secondary;
+        &::placeholder{
+            color: $secondary;
+            opacity: .5;
+        }
+    }
+    p{
+        text-align: center;
+    }
 }

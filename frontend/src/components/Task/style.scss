@@ -52,6 +52,9 @@
     background-color: $gray;
     margin-bottom: 2rem;
     cursor: pointer;
+    &:hover{
+        box-shadow: 0 0 10px $primary;
+    }
     &.done{
         .task__item-radio{
             background-color: greenyellow;

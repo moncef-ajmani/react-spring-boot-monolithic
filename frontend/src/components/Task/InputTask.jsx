@@ -5,7 +5,7 @@ const InputTask = () => {
   return (
     <div className='add__task'>
         <input type="text" name="add_task" id="add_task" placeholder='write your next task'/>
-        <div className='add__task-btn'><img src={plus_icon} alt="add" /></div>
+        <div className='add__task-btn box-shadow'><img src={plus_icon} alt="add" /></div>
     </div>
   )
 }

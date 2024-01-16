@@ -14,6 +14,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -32,7 +35,9 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
         userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("username",request.getUsername());
+        var jwtToken = jwtService.generateToken(claims,user);
 
         return AuthenticationResponseDTO
                 .builder()
@@ -55,7 +60,10 @@ public class AuthenticationService {
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         System.out.println(user);
 
-        var jwtToken = jwtService.generateToken(user);
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("username",user.getName());
+
+        var jwtToken = jwtService.generateToken(claims,user);
 
         return AuthenticationResponseDTO
                 .builder()
