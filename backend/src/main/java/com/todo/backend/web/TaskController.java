@@ -1,8 +1,6 @@
 package com.todo.backend.web;
 
-import com.todo.backend.DTOs.TaskRequestDTO;
-import com.todo.backend.DTOs.TaskResponseDTO;
-import com.todo.backend.DTOs.TasksResponseDTO;
+import com.todo.backend.DTOs.*;
 import com.todo.backend.entity.Task;
 import com.todo.backend.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -30,19 +28,24 @@ public class TaskController {
     }
 
     @PatchMapping("/{id}/updateTitle")
-    public ResponseEntity<Object> updateTaskTitle(@PathVariable Long id,@RequestBody String title){
-        TaskResponseDTO taskResponseDTO = taskService.updateTitle(id,title);
+    public ResponseEntity<Object> updateTaskTitle(@PathVariable Long id, @RequestBody UpdateTitleRequestDTO updateTitleRequestDTO){
+        TaskResponseDTO taskResponseDTO = taskService.updateTitle(id,updateTitleRequestDTO);
         if (taskResponseDTO != null){
             return ResponseEntity.ok(taskResponseDTO);
         }
         return ResponseEntity.badRequest().body("Invalid Request");
     }
     @PatchMapping("/{id}/updateStatus")
-    public ResponseEntity<Object> updateTaskStatus(@PathVariable Long id,@RequestBody String status){
-        TaskResponseDTO taskResponseDTO = taskService.updateStatus(id,status);
+    public ResponseEntity<Object> updateTaskStatus(@PathVariable Long id,@RequestBody UpdateStatusRequestDTO updateStatusRequestDTO){
+        TaskResponseDTO taskResponseDTO = taskService.updateStatus(id,updateStatusRequestDTO);
         if (taskResponseDTO != null){
             return ResponseEntity.ok(taskResponseDTO);
         }
         return ResponseEntity.badRequest().body("Invalid Request");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteTask(@PathVariable Long id){
+        return taskService.deleteTask(id);
     }
 }

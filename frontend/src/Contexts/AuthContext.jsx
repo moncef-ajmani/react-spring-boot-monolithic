@@ -13,15 +13,18 @@ export function AuthProvider(props){
 
     const logout = () =>{
         localStorage.removeItem("authUser")
+        window.location.href = "http://localhost:5173/";
     }
 
     const login = (token) =>{
         const decoded = jwtDecode(token);
         const authUser = {
             "username":decoded.username,
-            "email":decoded.sub
+            "email":decoded.sub,
+            "token":token
         }
         localStorage.setItem("authUser",JSON.stringify(authUser))
+        window.location.href = "http://localhost:5173/";
     }
 
     const value = {

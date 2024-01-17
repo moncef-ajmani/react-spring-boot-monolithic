@@ -1,8 +1,6 @@
 package com.todo.backend.service;
 
-import com.todo.backend.DTOs.TaskRequestDTO;
-import com.todo.backend.DTOs.TaskResponseDTO;
-import com.todo.backend.DTOs.TasksResponseDTO;
+import com.todo.backend.DTOs.*;
 import com.todo.backend.entity.Task;
 import com.todo.backend.entity.User;
 import com.todo.backend.enums.TaskStatus;
@@ -12,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,6 +63,7 @@ public class TaskService {
         System.out.println(user);
         Task task = Task
                 .builder()
+                .id(taskRequestDTO.getId())
                 .title(taskRequestDTO.getTitle())
                 .status(TaskStatus.INPROGRESS)
                 .created_at(new Date())
@@ -80,11 +80,11 @@ public class TaskService {
     }
 
 
-    public TaskResponseDTO updateTitle(@PathVariable Long id, @RequestBody String title){
+    public TaskResponseDTO updateTitle(Long id, UpdateTitleRequestDTO updateTitleRequestDTO){
         User user = getUser();
         System.out.println(user);
         Task task = taskRepository.findById(id).get();
-
+        String title = updateTitleRequestDTO.getTitle();
         System.out.println(task);
 
         if(Objects.equals(task.getUser().getId(), user.getId())){
@@ -99,11 +99,11 @@ public class TaskService {
         }
         return null;
     }
-    public TaskResponseDTO updateStatus(@PathVariable Long id, @RequestBody String status){
+    public TaskResponseDTO updateStatus(Long id, UpdateStatusRequestDTO updateStatusRequestDTO){
         User user = getUser();
-        System.out.println(user);
+        String status = updateStatusRequestDTO.getStatus();
+        System.out.println(status);
         Task task = taskRepository.findById(id).get();
-
         System.out.println(task);
 
         if(Objects.equals(task.getUser().getId(), user.getId())){
@@ -123,6 +123,19 @@ public class TaskService {
                     .build();
         }
         return null;
+    }
+
+    public ResponseEntity deleteTask(Long id){
+        User user = getUser();
+        System.out.println(user);
+        Task task = taskRepository.findById(id).get();
+
+        if(Objects.equals(task.getUser().getId(), user.getId())){
+            taskRepository.delete(task);
+            return ResponseEntity.ok().body("Deleted Successfully");
+        }
+
+        return ResponseEntity.badRequest().body("Error deleting a task");
     }
 
 }

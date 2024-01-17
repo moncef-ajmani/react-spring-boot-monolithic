@@ -1,17 +1,18 @@
 import React, { useRef, useState } from 'react'
 import { Modal,Form } from 'react-bootstrap'
-import { useAuth } from '../Contexts/AuthContext';
 import { apiInstance } from '../utils/Axios'
-const Login = () => {
-    const [show, setShow] = useState(false);
+import { useAuth } from '../Contexts/AuthContext';
+const Login = ({show, handleClose,handleShow, handleShowRegister}) => {
+    // const [show, setShow] = useState();
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     const email = useRef("")
     const password = useRef("")
 
-    const { login } = useAuth() 
+    const {login} = useAuth()
+
 
     const handleSubmit = () =>{
         console.log("HandleSubmit")
@@ -40,14 +41,17 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="" ref={password}/>
         </Form.Group>
-        <Form.Group className="mb-3" >
+        {/* <Form.Group className="mb-3" >
            <a href='#'>Forgot Password?</a>
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group className="mb-3" >
             <div className='modal-btn' onClick={handleSubmit}>Login</div>
         </Form.Group>
         <Form.Group>
-            <p>Not a member? <a href='#'>Signup now</a></p>
+            <p>Not a member? <span onClick={()=>{
+                handleClose()
+                handleShowRegister()
+            }}>Register</span></p>
         </Form.Group>
         </Form>
     </Modal>

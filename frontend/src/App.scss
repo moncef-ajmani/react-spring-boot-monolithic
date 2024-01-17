@@ -65,16 +65,27 @@ body{
         border-radius: .5rem;
         
     }
-    .form-control{
-        background-color: $gray;
-        color: $secondary;
-        border-color: $secondary;
-        &::placeholder{
-            color: $secondary;
-            opacity: .5;
-        }
-    }
+   
     p{
         text-align: center;
+        span{
+            color: $primary;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+.form-control{
+    background-color: $gray;
+    color: $secondary;
+    border-color: $secondary;
+    &::placeholder{
+        color: $secondary;
+        opacity: .5;
+    }
+    &:focus{
+        background-color: transparent;
+        color: $secondary;
     }
 }
