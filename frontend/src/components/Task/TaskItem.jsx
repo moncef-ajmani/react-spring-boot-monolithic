@@ -33,25 +33,30 @@ const TaskItem = ({ task, fetchData}) => {
   const handleSubmit = (e) =>{
     e.preventDefault()
     console.log(`Update from ${title} to ${update.current.value}`)
-    apiInstance.patch(`tasks/${id}/updateTitle`,{
-      "title":update.current.value
-    })
-    .then((data)=>{
-      console.log(data)
-      fetchData()
-    })
-    setEdit(false)
+    if(update.current.value !== ""){
+      apiInstance.patch(`tasks/${id}/updateTitle`,{
+        "title":update.current.value
+      })
+      .then((data)=>{
+        console.log(data)
+        fetchData()
+      })
+      setEdit(false)
+    }else{
+      alert("Task Title Should not be Empty")
+    }
+    
   }
   return (
     <div className={`task__item ${status == "COMPLETED" && 'done'}`} >
-      <div className='d-flex align-items-center'>
+      <div className='d-flex align-items-center' onClick={handleTaskClick}>
         <div className='task__item-radio'></div>
         {edit?(
           <form onSubmit={handleSubmit}>
             <input type='text' className='form-control' defaultValue={title} ref={update}/>
           </form>
         ):(
-        <div className='task__item-text' onClick={handleTaskClick}>{title}</div>
+        <div className='task__item-text' >{title}</div>
         )}
       </div>
         <div className='d-flex align-items-center'>

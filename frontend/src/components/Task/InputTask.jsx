@@ -8,13 +8,18 @@ const InputTask = ({ fetchData }) => {
   const task = useRef()
 
   const handleClick = () =>{
-    apiInstance.post("/tasks",{"title":task.current.value})
-    .then(({data})=>{
-      console.log(data)
-      task.current.value = ""
-      fetchData()
+    if(task.current.value !== ""){
+      apiInstance.post("/tasks",{"title":task.current.value})
+      .then(({data})=>{
+        console.log(data)
+        task.current.value = ""
+        fetchData()
 
-    })
+      })
+    }else{
+      alert("Task Title Should not be Empty")
+    }
+    
   }
   return (
     <div className='add__task'>
